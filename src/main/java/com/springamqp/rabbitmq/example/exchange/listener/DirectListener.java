@@ -6,6 +6,7 @@ import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Component;
 
 /**
+ * Annotation-driven Listener Endpoints
  * @auth tangjianghua
  * @date 2020/8/10
  */

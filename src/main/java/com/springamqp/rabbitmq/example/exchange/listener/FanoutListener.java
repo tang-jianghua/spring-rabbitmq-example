@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 import java.util.Map;
 
 /**
+ * Annotation-driven Listener Endpoints
  * @auth tangjianghua
  * @date 2020/8/10
  */

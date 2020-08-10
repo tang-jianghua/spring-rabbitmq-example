@@ -48,8 +48,12 @@ public class Test {
         rabbitTemplate.convertAndSend("myTopicExchange", "a.a.a", "来自myTopicExchange的消息a.a.a");
     }
     @org.junit.Test
-    public void sendtopicb() {
-        rabbitTemplate.convertAndSend("myTopicExchange", "b", "来自myTopicExchange的消息a.a.a");
+    public void sendtopicDelay() {
+        rabbitTemplate.convertAndSend("myTopicExchange", "dle.app1", "来自myTopicExchange的消息a.a.a",message -> {
+            MessageProperties properties = message.getMessageProperties();
+            properties.setHeader("times", "1");
+            return message;
+        });
     }
     @org.junit.Test
     public void sendheaderMatchAny() {
