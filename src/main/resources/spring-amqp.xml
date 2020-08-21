@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (c) 2020. tangjianghua All rights reserved..
+  -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:rabbit="http://www.springframework.org/schema/rabbit"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
+		http://www.springframework.org/schema/rabbit http://www.springframework.org/schema/rabbit/spring-rabbit-1.4.xsd">
+    <!--            shuffle-addresses为true设置随机访问集群，不设置的话会按照顺序访问-->
+    <rabbit:connection-factory
+            id="connectionFactory"
+            addresses="host1:5672,host2:5672"
+            cache-mode="CHANNEL"
+            channel-cache-size="25"
+            virtual-host="/"
+            thread-factory="tf"
+            connection-name-strategy="ConnectionNameStrategy"
+            shuffle-addresses="true"/>
+
+<!--    自定义线程工厂-->
+    <bean id="tf" class="org.springframework.scheduling.concurrent.CustomizableThreadFactory">
+        <constructor-arg value="rabbitmq-" />
+    </bean>
+
+<!--    连接名称-->
+    <bean id="ConnectionNameStrategy" class="org.springframework.amqp.rabbit.connection.SimplePropertyValueConnectionNameStrategy">
+        <constructor-arg value="myConnectionName"/>
+    </bean>
+</beans>

@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2020. tangjianghua All rights reserved..
+ */
+
 package com.springamqp.rabbitmq.example.exchange.listener;
 
 import org.springframework.amqp.core.ExchangeTypes;

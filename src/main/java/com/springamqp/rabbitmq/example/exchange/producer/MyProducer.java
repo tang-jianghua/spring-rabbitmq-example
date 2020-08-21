@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2020. tangjianghua All rights reserved..
+ */
+
 package com.springamqp.rabbitmq.example.exchange.producer;
 
 import org.springframework.amqp.core.MessageProperties;
@@ -27,6 +31,7 @@ public class MyProducer {
     }
 
     private void sendfanout2() {
+        rabbitTemplate.setUsePublisherConnection(true);
         rabbitTemplate.convertAndSend("myFanoutExchange", "routing.key.fanout.two", "来自myFanoutExchange的消息");
     }
 
